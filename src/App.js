@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Canvas } from "react-three-fiber";
+import "./App.css";
 
-function App() {
+const Box = () => {
+  const [hovered, setHovered] = useState(false);
+  const [active, setActive] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <mesh
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+      onClick={() => setActive(!active)}
+      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+    >
+      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <meshBasicMaterial
+        attach="material"
+        color={hovered ? "hotpink" : "gray"}
+      />
+    </mesh>
   );
-}
+};
+
+const App = () => {
+  return (
+    <Canvas>
+      <Box />
+    </Canvas>
+  );
+};
 
 export default App;
