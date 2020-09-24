@@ -48,7 +48,7 @@ const Box = () => {
       onClick={() => setActive(!active)}
       scale={props.scale}
     >
-      // <ambientLight />
+      <ambientLight />
       <spotLight position={[0, 1, 1]} penumbra={1} />
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach="material" color={props.color} />
