@@ -49,7 +49,7 @@ const Box = () => {
       scale={props.scale}
     >
       <ambientLight />
-      <spotLight position={[0, 1, 1]} penumbra={1} />
+      <spotLight position={[0, 5, 10]} />
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach="material" color={props.color} />
     </a.mesh>
