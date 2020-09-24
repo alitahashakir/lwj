@@ -26,7 +26,7 @@ const Controls = () => {
 };
 
 const Plane = () => (
-  <mesh rotation={[-Math.PI / 2, 0, 0]}>
+  <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
     <planeBufferGeometry attach="geometry" args={[100, 100]} />
     <meshPhysicalMaterial attach="material" color="red" />
   </mesh>
@@ -48,8 +48,8 @@ const Box = () => {
       onClick={() => setActive(!active)}
       scale={props.scale}
     >
-      <ambientLight />
-      <spotLight position={[0, 5, 10]} />
+      <ambientLight intensity={0.5} />
+      <spotLight position={[0, 5, 10]} penumbra={1} />
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach="material" color={props.color} />
     </a.mesh>
@@ -58,7 +58,8 @@ const Box = () => {
 
 const App = () => {
   return (
-    <Canvas>
+    <Canvas camera={{ position: [0, 0, 5] }}>
+      <fog attach="fog" args={["white", 10, 20]} />
       <Controls />
       <Box />
       <Plane />
