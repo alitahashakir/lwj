@@ -73,7 +73,7 @@ const Box = () => {
 const App = () => {
   return (
     <>
-      <h1>Hell World!</h1>
+      <h1>Hello World!</h1>
       <Canvas camera={{ position: [0, 0, 16] }} onCreated={({ gl }) => {
         gl.shadowMap.enabled = true
         gl.shadowMap.type = THREE.PCFSoftShadowMap
